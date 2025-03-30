@@ -1,12 +1,19 @@
-# React + Vite
+Title
 
-This template provides a minimal setup to get React working in Vite with HMR and some ESLint rules.
+"USA Around"
 
-Currently, two official plugins are available:
+Description
 
-- [@vitejs/plugin-react](https://github.com/vitejs/vite-plugin-react/blob/main/packages/plugin-react/README.md) uses [Babel](https://babeljs.io/) for Fast Refresh
-- [@vitejs/plugin-react-swc](https://github.com/vitejs/vite-plugin-react-swc) uses [SWC](https://swc.rs/) for Fast Refresh
+This project refers to Sprints 11 to 16 of the Triple Ten Web Development course (formerly Practicum) and is a sequel to the previous project "EUA Afora" from the "web_project_4_ptbr" repository.
+In this project, all the code from the previous project is ported to the React library, where all the functionalities of the previous project remain active in this project but with the implementation of the new formatting.
 
-## Expanding the ESLint configuration
+Features
 
-If you are developing a production application, we recommend using TypeScript and enable type-aware lint rules. Check out the [TS template](https://github.com/vitejs/vite/tree/main/packages/create-vite/template-react-ts) to integrate TypeScript and [`typescript-eslint`](https://typescript-eslint.io) in your project.
+- Command to open the "Edit", "Add", "Avatar" and "Screen Popup" popups (enlargement of the card image)
+- Functionality of the "Submit" button in the "Edit" popup to save the "name" and "about" (profession) information of the inputs
+- Functionality of the "Submit" button in the "Add" popup to create a new card
+- Functionality of the "Submit" button in the "Avatar" popup to update the profile photo (Avatar)
+- Button command to add a "Like" to cards with the like count included
+- Control of the delete buttons to delete a card
+
+Demonstration
