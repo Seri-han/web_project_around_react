@@ -38,7 +38,6 @@
   position: absolute; /* Posiciona el botón relativo al contenedor */
   top: 10px; /* Asegura que esté en la parte superior */
   right: 10px; /* Asegura que esté en la parte derecha */
-  z-index: 10; /* Asegura que el botón esté por encima de la imagen */
 }
 
 .element__photo-trash:hover {

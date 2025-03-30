@@ -1,16 +1,14 @@
+import { useState } from "react";
 import Popup from "./Popup/Popup";
 import NewCard from "./Forms/NewCard/NewCard";
-import { useState } from "react";
 import EditProfile from "./Forms/EditProfile/EditProfile";
 import EditAvatar from "./Forms/EditAvatar/EditAvatar";
-import Card from './Card/Card'
+import Card from './Card/Card';
+import ImagePopup from './ImagePopup/ImagePopup';
 
 import AddButton from '../images/Add-Button.png';
-// import CloseIcon from '../images/Close Icon.png';
 import EditBtnAvatar from '../images/edit_avatar.png';
-// import EditPhoto from '../images/edit_photo.png';
 import EditBtn from '../images/Edit-button.png';
-// import LikeBtn from '../images/like_button.png';
 
 const cards = [
   {
@@ -31,19 +29,20 @@ const cards = [
   },
 ];
 
-console.log(cards);
-
 export default function Main() {
   const [popup, setPopup] = useState(null);
+  const [cardsList, setCardsList] = useState(cards);
 
-  const popups = {
-    newCard: { title: "Nuevo lugar", children: <NewCard /> },
-    editProfile: { title: "Editar perfil", children: <EditProfile /> },
-    editAvatar: { title: "Editar avatar", children: <EditAvatar /> },
-  };
-
-  function handleOpenPopup(type) {
-    setPopup(popups[type]);
+  function handleOpenPopup(type, card = null) {
+    if (type === 'image') {
+      setPopup(<ImagePopup card={card} onClose={() => setPopup(null)} />);
+    } else if (type === 'newCard') {
+      setPopup(<Popup onClose={() => setPopup(null)} title="Nuevo lugar"><NewCard /></Popup>);
+    } else if (type === 'editProfile') {
+      setPopup(<Popup onClose={() => setPopup(null)} title="Editar perfil"><EditProfile /></Popup>);
+    } else if (type === 'editAvatar') {
+      setPopup(<Popup onClose={() => setPopup(null)} title="Editar avatar"><EditAvatar /></Popup>);
+    }
   }
 
   function handleClosePopup() {
@@ -85,17 +84,18 @@ export default function Main() {
         </button>
       </section>
       <div className="elements__container">
-      
-        {cards.map((card) => (
-          <Card key={card._id} card={card} />
+        {cardsList.map((card) => (
+          <Card key={card._id} card={card} onImageClick={() => handleOpenPopup('image', card)} />
         ))}
-      
       </div>
-      
+
       {popup && (
-        <Popup onClose={handleClosePopup} title={popup.title}>
-          {popup.children}
-        </Popup>
+        <div className="popup__overlay">
+          <div className="popup__content">
+            <button className="popup__close" onClick={handleClosePopup} aria-label="Cerrar popup">X</button>
+            {popup}
+          </div>
+        </div>
       )}
     </main>
   );

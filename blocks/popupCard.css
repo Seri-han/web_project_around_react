@@ -14,30 +14,25 @@
 }
 
 
-.popup__show {
+#popup__show, .popup.popup__show {
   display: flex;
   opacity: 1;
 }
 
+/* .popup__content {
+  position: relative;
+} */
+
 
 .popup__close {
   position: absolute;
-  overflow: visible;
-  cursor: pointer;
-  background: transparent;
-  border: 0;
   display: block;
-  outline: none;
-  padding: 0;
-  z-index: 1046;
-  box-shadow: none;
   touch-action: manipulation;
   font-family: "Helvetica Neue", Helvetica, Arial, sans-serif;
-  font-size: 60px;
-  line-height: 70px;
+  font-size: 30px;
   color: white;
-  top: -4rem;
-  right: -3rem;
+  top: 10px;
+  right: 10px;
   cursor: pointer;
 }
 
@@ -54,13 +49,11 @@
 /* Estilo para el nombre de la imagen (título) */
 .popup__photo-name {
   color: white;
-  margin-top: 10px;
-  z-index: 2;
   font-family: "Inter", arial, sans-serif;
-  font-size: 12px;
+  font-size: 1.5rem;
   font-weight: 400;
-  line-height: 14.52px;
-  text-align: left;
+  position: absolute;
+  bottom: 2rem;
 }
 
 .popup__photo-content {
@@ -68,14 +61,7 @@
 }
 
 @media (min-width: 501px) and (max-width: 768px) {
-  .popup__close {
-    top: -35px;
-    right: -35px;
-    width: 35px;
-    height: 35px;
-  }
-
-  .popup__photo-link {
+.popup__photo-link {
     max-width: 80vh; /* Ajusta el ancho máximo en relación con la altura de la ventana */
     max-height: 70%; /* Ajusta la altura máxima de la imagen */
   }
@@ -87,21 +73,8 @@
 }
 
 @media (max-width: 500px) {
-  .popup__close {
-    top: -35px;
-    right: 8px;
-    width: 30px;
-    height: 30px;
-  }
-
-  .popup__photo-link {
+.popup__photo-link {
     max-width: 80vw; /* Ajusta el ancho máximo para pantallas pequeñas */
     max-height: 60%; /* Limita la altura máxima para teléfonos pequeños */
-  }
-
-  .popup__photo-name {
-    font-size: 12px; /* Mantén un tamaño de fuente más pequeño para pantallas móviles */
-    line-height: 14px;
-    text-align: left; /* Centra el texto en pantallas pequeñas para mejor legibilidad */
   }
 }

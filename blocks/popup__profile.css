@@ -178,11 +178,6 @@ button:disabled {
     padding: 20px; /* Agrega padding para mejorar el diseño en pantallas medianas */
   }
 
-  .popup__close {
-    top: -45px;
-    left: 400px; /* Ajusta la posición del botón de cerrar */
-  }
-
   .form__title {
     font-size: 22px; /* Tamaño de fuente más grande */
     margin-top: 40px;
@@ -206,14 +201,6 @@ button:disabled {
     height: 322px; /* Deja que la altura se ajuste según el contenido */
   }
 
-  .popup__close {
-    width: 26px;
-    height: 26px;
-    top: -35px;
-    left: calc(
-      100% - 25px
-    ); /* Alinea el botón de cerrar en pantallas pequeñas */
-  }
 
   .form__title {
     font-family: "Inter", arial, sans-serif;

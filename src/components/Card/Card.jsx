@@ -1,4 +1,4 @@
-export default function Card({ card }) {
+export default function Card({ card, onImageClick }) {
     const { name, link, isLiked } = card;
     
     return (
@@ -8,7 +8,7 @@ export default function Card({ card }) {
           className="element__photo-trash"
           type="button"
         />
-        <img className="element__photo-link" src={link} alt={name} />
+        <img className="element__photo-link" src={link} alt={name} onClick={onImageClick}/>
         <div className="element__info">
           <h2 className="element__photo-name">{name}</h2>
           <button
