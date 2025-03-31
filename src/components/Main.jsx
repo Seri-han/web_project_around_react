@@ -6,9 +6,9 @@ import EditAvatar from "./Forms/EditAvatar/EditAvatar";
 import Card from './Card/Card';
 import ImagePopup from './ImagePopup/ImagePopup';
 
-import AddButton from '../images/Add-Button.png';
+import AddButton from '../images/addButton.png';
 import EditBtnAvatar from '../images/edit_avatar.png';
-import EditBtn from '../images/Edit-button.png';
+import EditBtn from '../images/editButton.png';
 
 const cards = [
   {
