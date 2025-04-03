@@ -2,7 +2,7 @@ export default function EditProfile() {
   return (
     <div className="popup" id="popup__show">
       <form className="form popup__form" id="form-avatar" noValidate>
-      <h2 class="form__title">Editar perfil</h2>
+      <h2 className="form__title">Editar perfil</h2>
         <input
           className="form__input"
           id="input-name"
