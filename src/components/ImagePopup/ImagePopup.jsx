@@ -1,11 +1,11 @@
 
 
 
-export default function ImagePopup({ card, onClose }) {
+export default function ImagePopup({ card }) {
   
   return (
     <div className="popup" id="popup__show">
-      <div className="popup__overlay"></div>
+     
        {card && card.link && (
             <>
               <img src={card.link} alt={card.name} className="popup__photo-link" />

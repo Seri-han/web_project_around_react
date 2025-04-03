@@ -38,12 +38,12 @@
 
 /* Estilo para la imagen en el popup */
 .popup__photo-link {
-  max-width: 80vh; /* Máximo tamaño de la imagen en relación con la ventana */
-  max-height: 80%; /* Máxima altura de la imagen */
-  object-fit: cover; /* Asegura que la imagen mantenga su proporción */
+  max-width: 80vh; 
+  max-height: 80%; 
+  object-fit: cover; 
   z-index: 2;
   border-radius: 10px;
-  box-shadow: 0 4px 10px rgba(0, 0, 0, 0.5); /* Añade sombra a la imagen */
+  box-shadow: 0 4px 10px rgba(0, 0, 0, 0.5); 
 }
 
 /* Estilo para el nombre de la imagen (título) */

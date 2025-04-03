@@ -1,33 +1,36 @@
 export default function EditProfile() {
-    return (
-      <form className="popup__form" name="edit-profile-form" noValidate>
-        <label className="popup__field">
-          <input
-            className="popup__input"
-            id="profile-name"
-            name="name"
-            placeholder="Nombre"
-            required
-            type="text"
-            minLength="2"
-            maxLength="40"
-          />
-          <span className="popup__error" id="profile-name-error"></span>
-        </label>
-        <label className="popup__field">
-          <input
-            className="popup__input"
-            id="profile-about"
-            name="about"
-            placeholder="Acerca de mí"
-            required
-            type="text"
-            minLength="2"
-            maxLength="200"
-          />
-          <span className="popup__error" id="profile-about-error"></span>
-        </label>
-        <button className="button popup__button" type="submit">Guardar</button>
+  return (
+    <div className="popup" id="popup__show">
+      <form className="form popup__form" id="form-avatar" noValidate>
+      <h2 class="form__title">Editar perfil</h2>
+        <input
+          className="form__input"
+          id="input-name"
+          name="name"
+          placeholder="Nombre"
+          required
+          type="text"
+          minLength="2"
+          maxLength="40"
+          
+        />
+       <span className="input-error input-name-error"></span>
+
+        <input
+          className="form__input"
+          id="input-hobbie"
+          name="about"
+          placeholder="Acerca de mí"
+          required
+          type="text"
+          minLength="2"
+          maxLength="200"
+          
+        />
+        <span className="input-error input-hobbie-error"></span>
+
+        <button type="submit" className="form__submit" disabled>Guardar</button>
       </form>
-    );
-  }
+    </div>
+  );
+}

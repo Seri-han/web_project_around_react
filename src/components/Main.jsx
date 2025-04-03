@@ -31,17 +31,17 @@ const cards = [
 
 export default function Main() {
   const [popup, setPopup] = useState(null);
-  const [cardsList, setCardsList] = useState(cards);
+  const [cardsList ] = useState(cards);
 
   function handleOpenPopup(type, card = null) {
     if (type === 'image') {
       setPopup(<ImagePopup card={card} onClose={() => setPopup(null)} />);
     } else if (type === 'newCard') {
-      setPopup(<Popup onClose={() => setPopup(null)} title="Nuevo lugar"><NewCard /></Popup>);
+      setPopup(<NewCard onClose={() => setPopup(null)}/>);
     } else if (type === 'editProfile') {
-      setPopup(<Popup onClose={() => setPopup(null)} title="Editar perfil"><EditProfile /></Popup>);
+      setPopup(<EditProfile onClose={() => setPopup(null)}/>);
     } else if (type === 'editAvatar') {
-      setPopup(<Popup onClose={() => setPopup(null)} title="Editar avatar"><EditAvatar /></Popup>);
+      setPopup(<EditAvatar onClose={() => setPopup(null)}/>);
     }
   }
 

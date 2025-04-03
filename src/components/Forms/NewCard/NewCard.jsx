@@ -1,34 +1,34 @@
 export default function NewCard() {
     return (
-      <form className="popup__form" name="card-form" id="new-card-form" noValidate>
-        <label className="popup__field">
+      <div className="popup" id="popup__show">
+       <form className="form popup__form" id="form-addCard" noValidate>
+       <h2 className="form__title">Nuevo Lugar</h2>
           <input
-            className="popup__input popup__input_type_card-name"
-            id="card-name"
-            maxLength="30"
-            minLength="1"
-            name="card-name"
-            placeholder="Título"
-            required
+            className="form__input"
             type="text"
+            id="input-card-name"
+            placeholder="Titulo"
+            minLength="2"
+            maxLength="30"
+            name="name"
+            required
           />
-          <span className="popup__error" id="card-name-error"></span>
-        </label>
-        <label className="popup__field">
+         <span className="input-error input-card-name-error"></span>
+        
+      
           <input
-            className="popup__input popup__input_type_url"
-            id="card-link"
+             className="form__input"
+            id="input-card-link"
             name="link"
             placeholder="Enlace de la imagen"
             required
             type="url"
           />
-          <span className="popup__error" id="card-link-error"></span>
-        </label>
-        <button className="button popup__button" type="submit">
-          Guardar
-        </button>
-      </form>
+          <span className="input-error input-card-link-error"></span>
+       
+          <button type="submit" className="form__submit" disabled>Crear</button>
+        </form>
+      </div>
     );
   }
   
