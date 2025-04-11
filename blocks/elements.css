@@ -38,6 +38,7 @@
   position: absolute; /* Posiciona el botón relativo al contenedor */
   top: 10px; /* Asegura que esté en la parte superior */
   right: 10px; /* Asegura que esté en la parte derecha */
+  filter: drop-shadow(1px 1px 1px black);
 }
 
 .element__photo-trash:hover {
