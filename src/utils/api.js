@@ -99,12 +99,32 @@ export class Api extends React.Component {
       });
     }
   
+    // changeLikeCardStatus(cardId, isLiked) {
+    //   if (isLiked) {
+    //     return this.addLikes(cardId);
+    //   }
+    //   return this.removeLikes(cardId);
+      
+    // }
     changeLikeCardStatus(cardId, isLiked) {
-      if (isLiked) {
-        return this.addLikes(cardId);
-      }
-      return this.removeLikes(cardId);
+      const method = isLiked ? 'PUT' : 'DELETE';
+      return fetch(`${this._baseUrl}/cards/${cardId}/likes`, {
+        method,
+        headers: this._headers,
+      })
+        .then((res) => {
+          if (!res.ok) {
+            return Promise.reject(`❌ Error: ${res.status}`);
+          }
+          return res.json(); 
+        })
+        .then((data) => {
+          console.log("✅ Card actualizada desde el servidor:", data);
+          return data;
+        });
     }
+    
+    
   
     deleteCard(cardId) {
       return fetch(`${this._baseUrl}/cards/${cardId}`, {

@@ -14,8 +14,11 @@ import { CurrentUserContext } from "../contexts/CurrentUserContext";
 export default function Main({ setCurrentUser }) {
   const [popup, setPopup] = useState(null);
   const [cards, setCards] = useState([]);
+  
   const currentUser = useContext(CurrentUserContext);
 
+
+  
   useEffect(() => {
     api.getUserInfo().then(setCurrentUser).catch(console.error);
 
@@ -45,22 +48,40 @@ export default function Main({ setCurrentUser }) {
   }
 
   async function handleCardLike(card) {
-    const likes = Array.isArray(card.likes) ? card.likes : [];
-  
-    const isLiked = likes.some((i) => i._id === currentUser._id);
-  
+    const isLiked = Array.isArray(card.likes) && card.likes.some((i) => {
+      const likeId = typeof i === 'object' ? i._id : i;
+      return likeId === currentUser._id;
+    });
+    
     try {
       const newCard = await api.changeLikeCardStatus(card._id, !isLiked);
-  
+      console.log("New card from server:", newCard);
+      
+      let updatedCard = newCard;
+      if (!Array.isArray(newCard.likes) || newCard.likes.length === 0) {
+        updatedCard = {
+          ...newCard,
+          likes: isLiked
+            ? card.likes.filter((like) => {
+                const likeId = typeof like === 'object' ? like._id : like;
+                return likeId !== currentUser._id;
+              })
+            : [...card.likes, { _id: currentUser._id }],
+        };
+      }
+      
       setCards((state) =>
         state.map((currentCard) =>
-          currentCard._id === card._id ? newCard : currentCard
+          currentCard._id === card._id ? updatedCard : currentCard
         )
       );
+      
     } catch (error) {
       console.error(error);
     }
   }
+  
+  
   
 
   function handleCardDelete(card) {

@@ -1,50 +1,48 @@
-import { CurrentUserContext } from "../../contexts/CurrentUserContext"
+import { CurrentUserContext } from "../../contexts/CurrentUserContext";
 import React, { useContext } from "react";
 
-export default function Card({
-  card,
-  onImageClick,
-  onCardLike,
-  onCardDelete
-}) {
+export default function Card({ card, onImageClick, onCardLike, onCardDelete }) {
   const currentUser = useContext(CurrentUserContext);
-  const ownerId = typeof card.owner === 'object' ? card.owner._id : card.owner;
-const isOwn = ownerId === currentUser._id;
-
-
-const isLiked = Array.isArray(card.likes)
-  ? card.likes.some((i) => i._id === currentUser._id)
-  : false;
-
-
+  
+  // Si card.owner es un objeto o un string:
+  const ownerId = typeof card.owner === "object" ? card.owner._id : card.owner;
+  const isOwn = currentUser && ownerId === currentUser._id;
+  
+  // Forzá que likes sea un array (vacío por defecto)
+  const likes = Array.isArray(card.likes) ? card.likes : [];
+  const isLiked = currentUser && likes.some((like) => {
+    const likeId = typeof like === "object" && like !== null ? like._id : like;
+    return likeId === currentUser._id;
+  });
 
   const cardLikeButtonClassName = `element__photo-like ${
-    isLiked ? 'element__photo-like_active' : ''
+    isLiked ? "element__photo-like_active" : ""
   }`;
 
-  function handleCardLike () {
+  // Simplificamos los manejadores usando card ya disponible
+  const handleLikeClick = () => {
+    console.log("Like clicked!", card);
     onCardLike(card);
-  }
-  
-  function handleCardDelete () {
+  };
+
+  const handleDeleteClick = () => {
     onCardDelete(card);
-  }
-  
+  };
 
   return (
     <li className="element">
       {isOwn && (
         <button
-          aria-label="Delete card"
+          aria-label="Eliminar tarjeta"
           className="element__photo-trash"
           type="button"
-          onClick={handleCardDelete}
+          onClick={handleDeleteClick}
         />
       )}
       <img
         className="element__photo-link"
         src={card.link}
-        alt={card.name}
+        alt={card.name || "Imagen de tarjeta"}
         onClick={() => onImageClick(card)}
       />
       <div className="element__info">
@@ -53,9 +51,9 @@ const isLiked = Array.isArray(card.likes)
           aria-label="Dar like a la tarjeta"
           type="button"
           className={cardLikeButtonClassName}
-          onClick={handleCardLike}
+          onClick={handleLikeClick}
         />
-        <span>{Array.isArray(card.likes) ? card.likes.length : 0}</span>
+        <span className="element__photo-like-count">{likes.length}</span>
       </div>
     </li>
   );
