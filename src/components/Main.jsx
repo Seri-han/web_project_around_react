@@ -1,5 +1,5 @@
 import { useState, useContext } from "react";
-// import Popup from "./Popup/Popup";
+import Popup from "./Popup/Popup";
 import NewCard from "./Forms/NewCard/NewCard";
 import EditProfile from "./Forms/EditProfile/EditProfile";
 import EditAvatar from "./Forms/EditAvatar/EditAvatar";
