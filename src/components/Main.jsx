@@ -102,7 +102,8 @@ export default function Main({ setCurrentUser }) {
         <div className="profile__avatar-container">
             <img
               className="profile__avatar"
-              src={currentUser.avatar || "https://via.placeholder.com/150"}
+              src={`${currentUser.avatar}?${new Date().getTime()}`}
+
               alt="Avatar"
               
               // onClick={() => onOpenPopup(editAvatarPopup)}
