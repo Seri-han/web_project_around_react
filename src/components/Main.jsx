@@ -12,11 +12,11 @@ import api from "../utils/api";
 import { CurrentUserContext } from "../contexts/CurrentUserContext";
 
 export default function Main({ setCurrentUser }) {
+
   const [popup, setPopup] = useState(null);
   const [cards, setCards] = useState([]);
-  
-  const currentUser = useContext(CurrentUserContext);
-
+  const { currentUser } = useContext(CurrentUserContext);
+  // const editAvatarPopup = { title: "Editar avatar", children: <EditAvatar /> };
 
   
   useEffect(() => {
@@ -81,6 +81,9 @@ export default function Main({ setCurrentUser }) {
     }
   }
   
+  useEffect(() => {
+    console.log("Desde Main.jsx: currentUser", currentUser);
+  }, [currentUser]);
   
   
 
@@ -97,13 +100,14 @@ export default function Main({ setCurrentUser }) {
     <main className="main">
       <section className="profile">
         <div className="profile__avatar-container">
-          {currentUser.avatar && (
             <img
               className="profile__avatar"
-              src={currentUser.avatar}
+              src={currentUser.avatar || "https://via.placeholder.com/150"}
               alt="Avatar"
+              
+              // onClick={() => onOpenPopup(editAvatarPopup)}
             />
-          )}
+         
           <button
             className="profile__edit-avatar"
             aria-label="Editar Avatar"
@@ -114,8 +118,14 @@ export default function Main({ setCurrentUser }) {
         </div>
         <div className="profile__content">
           <div className="profile__info">
-            <p className="profile__name">{currentUser.name}</p>
-            <p className="profile__hobbie">{currentUser.about}</p>
+          {currentUser.name ? (
+      <>
+        <p className="profile__name">{currentUser.name}</p>
+        <p className="profile__hobbie">{currentUser.about}</p>
+      </>
+    ) : (
+      <p>Cargando perfil...</p>
+    )}
           </div>
           <button
             className="profile__edit-button"
