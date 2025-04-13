@@ -1,7 +1,7 @@
 import { useRef, useContext, useEffect } from "react";
 import { CurrentUserContext } from "../../../contexts/CurrentUserContext";
 
-export default function EditAvatar() {
+export default function EditAvatar([{onClose}]) {
   const { handleUpdateAvatar } = useContext(CurrentUserContext);
   const inputValue = useRef();
 
@@ -10,6 +10,7 @@ export default function EditAvatar() {
     handleUpdateAvatar({
       avatar: inputValue.current.value,
     });
+    onClose();
   }
 
   useEffect(() => {

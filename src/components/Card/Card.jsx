@@ -2,11 +2,13 @@ import { CurrentUserContext } from "../../contexts/CurrentUserContext";
 import React, { useContext } from "react";
 
 export default function Card({ card, onImageClick, onCardLike, onCardDelete }) {
-  const currentUser = useContext(CurrentUserContext);
+  const {currentUser} = useContext(CurrentUserContext);
   
   // Si card.owner es un objeto o un string:
   const ownerId = typeof card.owner === "object" ? card.owner._id : card.owner;
   const isOwn = currentUser && ownerId === currentUser._id;
+  // const isOwn = card.owner._id === currentUser._id;
+
   
   // Forzá que likes sea un array (vacío por defecto)
   const likes = Array.isArray(card.likes) ? card.likes : [];
