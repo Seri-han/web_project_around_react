@@ -18,6 +18,7 @@ export default function NewCard({ onAddPlace, onClose }) {
   }
 
   return (
+    
     <div className="popup" id="popup__show">
       <form
         className="form popup__form"

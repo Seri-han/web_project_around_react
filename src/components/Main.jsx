@@ -8,20 +8,17 @@ import ImagePopup from "./ImagePopup/ImagePopup";
 import AddButton from "../images/addButton.png";
 import EditBtnAvatar from "../images/edit_avatar.png";
 import EditBtn from "../images/editButton.png";
-// import api from "../utils/api";
 import { CurrentUserContext } from "../contexts/CurrentUserContext";
 
 export default function Main({ 
-  // onOpenPopup, 
-  // onClosePopup, 
   cards, 
   onCardLike, 
   onCardDelete, 
   onAddPlace 
 }) {
   const [popup, setPopup] = useState(null);
-
   const { currentUser } = useContext(CurrentUserContext);
+
 
   function handleOpenPopup(type, card = null) {
     if (type === "image") {

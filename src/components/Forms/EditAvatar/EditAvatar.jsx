@@ -1,29 +1,23 @@
-import { useRef, useContext, useEffect } from "react";
+import { useRef, useContext } from "react";
 import { CurrentUserContext } from "../../../contexts/CurrentUserContext";
 
-export default function EditAvatar([{onClose}]) {
+export default function EditAvatar({ onClose }) {
   const { handleUpdateAvatar } = useContext(CurrentUserContext);
-  const inputValue = useRef();
+  const inputRef = useRef();
 
-  function handleSubmit(e) {
+  const handleSubmit = (e) => {
     e.preventDefault();
-    handleUpdateAvatar({
-      avatar: inputValue.current.value,
-    });
-    onClose();
-  }
-
-  useEffect(() => {
-    if (inputValue.current) {
-      inputValue.current.value = "";
+    const avatar = inputRef.current.value;
+    if (avatar) {
+      handleUpdateAvatar({ avatar });
+      onClose();
     }
-  }, []);
+  };
 
   return (
     <form
-      className="popup__form"
-      name="edit-avatar-form"
-      id="popup__show"
+      className="form popup__form"
+      id="form-avatar"
       onSubmit={handleSubmit}
       noValidate
     >
@@ -35,7 +29,7 @@ export default function EditAvatar([{onClose}]) {
         placeholder="URL de la imagen"
         required
         type="url"
-        ref={inputValue}
+        ref={inputRef}
       />
       <span className="input-error input-avatar-error"></span>
 

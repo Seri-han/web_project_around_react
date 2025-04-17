@@ -35,6 +35,7 @@ export default function EditProfile({ onClose }) {
     description.trim().length >= 2;
 
   return (
+    
     <div className="popup" id="popup__show">
       <form
         className="form popup__form"
