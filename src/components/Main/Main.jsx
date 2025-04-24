@@ -110,6 +110,9 @@ export default function Main({
             >
               X
             </button>
+            <Popup onClose={handleClosePopup} title={popup.title}>
+          {popup.children}
+        </Popup>
             {popup}
           </div>
         </div>
