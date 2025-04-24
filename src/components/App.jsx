@@ -1,8 +1,8 @@
 import React, { useEffect, useState } from "react";
 import { api } from "../utils/api.js";
-import Header from "./Header.jsx";
-import Footer from "./Footer.jsx";
-import Main from "./Main.jsx";
+import Header from "../components/Header/Header.jsx";
+import Footer from "../components/Footer/Footer.jsx";
+import Main from "../components/Main/Main.jsx";
 import "../index.css";
 import { CurrentUserContext } from "../contexts/CurrentUserContext.js";
 
