@@ -87,7 +87,7 @@ export default function Main({
 
       <ul className="elements__container">
       {cards.map((card) => {
-  console.log("Card data:", card);
+ 
   return (
     <Card
       key={card._id}

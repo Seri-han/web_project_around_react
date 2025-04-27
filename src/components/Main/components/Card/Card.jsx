@@ -23,7 +23,7 @@ export default function Card({ card, onImageClick, onCardLike, onCardDelete }) {
 
   // Simplificamos los manejadores usando card ya disponible
   const handleLikeClick = () => {
-    console.log("Like clicked!", card);
+   
     onCardLike(card);
   };
 
